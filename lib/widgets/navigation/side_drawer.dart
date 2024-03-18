@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:emotion_chat/screens/main/profile_tab/settings_screen.dart';
+import 'package:emotion_chat/services/auth/auth_gate.dart';
 import 'package:emotion_chat/services/auth/auth_service.dart';
 import 'package:emotion_chat/services/image/local_storage/profile_image_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,6 +41,12 @@ class _SideDrawerState extends State<SideDrawer> {
   }
 
   void signOut() {
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const AuthGate(),
+        ),
+        (route) => false);
     final auth = AuthService();
     auth.signOut();
   }
