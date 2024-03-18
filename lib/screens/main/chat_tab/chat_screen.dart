@@ -137,7 +137,11 @@ class ChatScreen extends StatelessWidget {
       alignment: isCurrentUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Column(
         children: [
-          ChatBubble(message: data['content'], isCurrentUser: isCurrentUser),
+          ChatBubble(
+            message: data['content'],
+            emotion: emotion,
+            isCurrentUser: isCurrentUser,
+          ),
         ],
       ),
     );
